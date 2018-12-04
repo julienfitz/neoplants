@@ -1,7 +1,24 @@
+<% if @plant.health_status <= 0 %>
+  Woops! This plant has died. Try again with a <%= link_to "new plant", new_plant_path %>?
+<% end %>
+
 <ul>
   <li>Name: <%= @plant.name %></li>
   <li>Disposition: <%= @plant.disposition %></li>
+  <li>Food Status: <%= @plant.food_status %></li>
+  <li>Mood Status: <%= @plant.mood_status %></li>
+  <li>Water Status: <%= @plant.water_status %></li>
+  <li>Sunlight Status: <%= @plant.sunlight_status %></li>
+  <li>Overall Health: <%= @plant.health_status %></li>
 </ul>
+
+<%= link_to "Feed Me!", plant_path(@plant, feed: true), method: :put %><br />
+<%= link_to "Water Me!", plant_path(@plant, water: true), method: :put %><br />
+<%= link_to "Talk to Me!", plant_path(@plant, talk: true), method: :put %><br />
+<%= link_to "Give Me More Sun!", plant_path(@plant, sun: true), method: :put %><br /><br />
+
+<p>In-game time for this plant is <%= @plant.in_game_time %>.</p>
+<%= link_to "Fast-forward 1 day", plant_path(@plant, pass_time: 24), method: :put %><br /><br />
 
 <%= link_to "Edit", edit_plant_path(@plant) %><br/>
 <%= link_to "Delete", plant_path(@plant), method: :delete %><br />

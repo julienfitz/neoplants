@@ -14,12 +14,13 @@ ActiveRecord::Schema.define(version: 2018_12_02_232549) do
 
   create_table "plants", force: :cascade do |t|
     t.string "name"
-    t.integer "food_status"
-    t.integer "mood_status"
-    t.integer "water_status"
-    t.integer "sunlight_status"
-    t.string "disposition"
-    t.integer "health_status"
+    t.integer "food_status", default: 10
+    t.integer "mood_status", default: 10
+    t.integer "water_status", default: 10
+    t.integer "sunlight_status", default: 10
+    t.string "disposition", default: "easygoing"
+    t.integer "health_status", default: 10
+    t.datetime "in_game_time", default: "2018-12-05 04:14:14"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

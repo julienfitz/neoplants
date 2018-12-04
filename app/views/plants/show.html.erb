@@ -1,0 +1,8 @@
+<ul>
+  <li>Name: <%= @plant.name %></li>
+  <li>Disposition: <%= @plant.disposition %></li>
+</ul>
+
+<%= link_to "Edit", edit_plant_path(@plant) %><br/>
+<%= link_to "Delete", plant_path(@plant), method: :delete %><br />
+<%= link_to "Plants Index", plants_path %>

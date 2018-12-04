@@ -1,0 +1,15 @@
+I heard u wanna make a plant
+
+<ul>
+  <%= form_for @plant, url: {action: "create"} do |f| %>
+    <li>Name: <%= f.text_field :name %></li>
+    <li>Disposition</li>
+    <li><%= radio_button_tag("plant[disposition]", "easygoing") %>
+    <%= label_tag(:disposition, "easygoing") %></li>
+    <li><%= radio_button_tag("plant[disposition]", "neutral") %>
+    <%= label_tag(:disposition, "neutral") %></li>
+    <li><%= radio_button_tag("plant[disposition]", "irritable") %>
+    <%= label_tag(:disposition, "irritable") %></li>
+    <%= f.submit "It's alive!!" %>
+  <% end %>
+</ul>

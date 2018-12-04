@@ -1,0 +1,13 @@
+Wanna make a <%= link_to "new plant", new_plant_path %>?
+
+<% if @plants.any? %>
+  <ul>
+  <% @plants.each do |plant| %>
+    <li><%= link_to plant.name, plant_path(plant) %><br />
+      <%= plant.disposition %>
+    </li>
+  <% end %>
+  </ul>
+<% else %>
+  No plants yet! Want to create one?
+<% end %>

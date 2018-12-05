@@ -10,30 +10,8 @@
   </head>
 
   <body>
-    <% if @plant && @plant.errors.any? %>
-      <% @plant.errors.messages[:food_status].each do |err| %>
-        <p><%= err %></p>
-      <% end %>
-
-      <% @plant.errors.messages[:mood_status].each do |err| %>
-        <p><%= err %></p>
-      <% end %>
-
-      <% @plant.errors.messages[:sunlight_status].each do |err| %>
-        <p><%= err %></p>
-      <% end %>
-
-      <% @plant.errors.messages[:water_status].each do |err| %>
-        <p><%= err %></p>
-      <% end %>
-
-      <% @plant.errors.messages[:health_status].each do |err| %>
-        <p><%= err %></p>
-      <% end %>
-
-      <% @plant.errors.messages[:disposition].each do |err| %>
-        <p><%= err %></p>
-      <% end %>
+    <% if flash[:error] %>
+      <%= flash[:error] %>
     <% end %>
     <%= yield %>
   </body>

@@ -19,6 +19,7 @@ class PlantsController < ApplicationController
 
   def update
     @plant = Plant.find(params[:id])
+
     if params[:feed]
       feed
     elsif params[:water]
@@ -58,7 +59,7 @@ class PlantsController < ApplicationController
 
   def handle_invalid_record(exception)
     puts exception
-
+    flash[:error] = exception
     redirect_to plant_path(@plant)
   end
 

@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2018_12_02_232549) do
     t.integer "sunlight_status", default: 10
     t.string "disposition", default: "easygoing"
     t.integer "health_status", default: 10
-    t.datetime "in_game_time", default: "2018-12-05 04:14:14"
+    t.date "in_game_time", default: "2018-12-05"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

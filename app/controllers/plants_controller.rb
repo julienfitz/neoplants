@@ -32,8 +32,9 @@ class PlantsController < ApplicationController
       talk
     else
       @plant.update_attributes!(plant_params)
-      redirect_to plant_path(@plant)
     end
+
+    redirect_to plant_path(@plant)
   end
 
   def edit
@@ -65,28 +66,21 @@ class PlantsController < ApplicationController
 
   def talk
     @plant.update_attributes!(mood_status: @plant.mood_status + 1)
-    redirect_to plant_path(@plant)
   end
 
   def feed
     food = @plant.food_status + 1
     @plant.update_attributes!(food_status: food)
-
-    redirect_to plant_path(@plant)
   end
 
   def water
     water = @plant.water_status + 1
     @plant.update_attributes!(water_status: water)
-
-    redirect_to plant_path(@plant)
   end
 
   def sunlight
     sun = @plant.sunlight_status + 1
     @plant.update_attributes!(sunlight_status: sun)
-
-    redirect_to plant_path(@plant)
   end
 
   def pass_time
@@ -94,8 +88,6 @@ class PlantsController < ApplicationController
     @plant.update_attributes!(in_game_time: new_time)
     update_plant_statuses
     update_mood_status
-
-    redirect_to plant_path(@plant)
   end
 
   def update_plant_statuses

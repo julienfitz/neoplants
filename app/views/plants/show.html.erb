@@ -2,6 +2,18 @@
   Woops! This plant has died. Try again with a <%= link_to "new plant", new_plant_path %>?
 <% end %>
 
+<p>
+  <%= @plant.name %> has been alive for <%= @plant.time_alive %> days!
+</p>
+
+<% Plant.affirmations.each_pair do |number, affirmation| %>
+  <% if @plant.time_alive >= number %>
+    <p>
+      <%= affirmation %>
+    </p>
+  <% end %>
+<% end %>
+
 <ul>
   <li>Name: <%= @plant.name %></li>
   <li>Disposition: <%= @plant.disposition %></li>

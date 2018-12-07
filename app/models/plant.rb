@@ -1,4 +1,7 @@
 class Plant < ApplicationRecord
+  scope :living, -> { where(alive: true) }
+  scope :deceased, -> { where.not(alive: true) }
+
   validates :food_status, numericality: {
     greater_than_or_equal_to: 0,
     less_than_or_equal_to: 10,

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_02_232549) do
+ActiveRecord::Schema.define(version: 2018_12_07_165633) do
 
   create_table "plants", force: :cascade do |t|
     t.string "name"
@@ -20,9 +20,10 @@ ActiveRecord::Schema.define(version: 2018_12_02_232549) do
     t.integer "sunlight_status", default: 10
     t.string "disposition", default: "easygoing"
     t.integer "health_status", default: 10
-    t.date "in_game_time", default: "2018-12-05"
+    t.date "in_game_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "alive", default: true
   end
 
 end

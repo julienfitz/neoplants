@@ -1,8 +1,17 @@
 Wanna make a <%= link_to "new plant", new_plant_path %>?
 
 <% if @plants.any? %>
+  <h3>Living Plants</h3>
   <ul>
-  <% @plants.each do |plant| %>
+  <% @plants.living.each do |plant| %>
+    <li><%= link_to plant.name, plant_path(plant) %><br />
+      <%= plant.disposition %>
+    </li>
+  <% end %>
+  </ul>
+  <h3>Deceased Plants :(</h3>
+  <ul>
+  <% @plants.deceased.each do |plant| %>
     <li><%= link_to plant.name, plant_path(plant) %><br />
       <%= plant.disposition %>
     </li>

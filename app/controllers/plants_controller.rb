@@ -13,6 +13,7 @@ class PlantsController < ApplicationController
 
   def create
     @plant = Plant.create(plant_params)
+    @plant.update_attributes!(in_game_time: Date.today)
 
     redirect_to plant_path(@plant)
   end
@@ -20,18 +21,20 @@ class PlantsController < ApplicationController
   def update
     @plant = Plant.find(params[:id])
 
-    if params[:feed]
-      feed
-    elsif params[:water]
-      water
-    elsif params[:sun]
-      sunlight
-    elsif params[:pass_time]
-      pass_time
-    elsif params[:talk]
-      talk
-    else
-      @plant.update_attributes!(plant_params)
+    if is_alive?
+      if params[:feed]
+        feed
+      elsif params[:water]
+        water
+      elsif params[:sun]
+        sunlight
+      elsif params[:pass_time]
+        pass_time
+      elsif params[:talk]
+        talk
+      else
+        @plant.update_attributes!(plant_params)
+      end
     end
 
     redirect_to plant_path(@plant)
@@ -55,13 +58,22 @@ class PlantsController < ApplicationController
   private
 
   def plant_params
-    params.require(:plant).permit(:name, :disposition, :food_status, :water_status, :sunlight_status)
+    params.require(:plant).permit(:name, :disposition, :food_status, :water_status, :sunlight_status, :in_game_time)
   end
 
   def handle_invalid_record(exception)
     puts exception
     flash[:error] = exception
     redirect_to plant_path(@plant)
+  end
+
+  def is_alive?
+    if @plant.health_status <= 0
+      @plant.update_attributes!(alive: false)
+      false
+    else
+      true
+    end
   end
 
   def talk

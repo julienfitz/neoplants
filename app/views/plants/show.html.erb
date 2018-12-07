@@ -24,13 +24,15 @@
   <li>Overall Health: <%= @plant.health_status %></li>
 </ul>
 
-<%= link_to "Feed Me!", plant_path(@plant, feed: true), method: :put %><br />
-<%= link_to "Water Me!", plant_path(@plant, water: true), method: :put %><br />
-<%= link_to "Talk to Me!", plant_path(@plant, talk: true), method: :put %><br />
-<%= link_to "Give Me More Sun!", plant_path(@plant, sun: true), method: :put %><br /><br />
+<% if @plant.alive? %>
+  <%= link_to "Feed Me!", plant_path(@plant, feed: true), method: :put %><br />
+  <%= link_to "Water Me!", plant_path(@plant, water: true), method: :put %><br />
+  <%= link_to "Talk to Me!", plant_path(@plant, talk: true), method: :put %><br />
+  <%= link_to "Give Me More Sun!", plant_path(@plant, sun: true), method: :put %><br /><br />
+  <%= link_to "Fast-forward 1 day", plant_path(@plant, pass_time: 24), method: :put %><br /><br />
+<% end %>
 
 <p>In-game time for this plant is <%= @plant.in_game_time %>.</p>
-<%= link_to "Fast-forward 1 day", plant_path(@plant, pass_time: 24), method: :put %><br /><br />
 
 <%= link_to "Edit", edit_plant_path(@plant) %><br/>
 <%= link_to "Delete", plant_path(@plant), method: :delete %><br />

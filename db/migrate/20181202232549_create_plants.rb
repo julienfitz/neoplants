@@ -8,7 +8,7 @@ class CreatePlants < ActiveRecord::Migration[5.2]
       t.integer :sunlight_status, default: 10
       t.string :disposition, default: "easygoing"
       t.integer :health_status, default: 10
-      t.date :in_game_time, default: Date.today
+      t.date :in_game_time, default: nil
 
       t.timestamps
     end
